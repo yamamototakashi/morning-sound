@@ -2,7 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const base = process.env.GITHUB_PAGES ? '/morning-sound/' : '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
@@ -16,21 +19,21 @@ export default defineConfig({
         background_color: '#0a0a14',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: base,
+        scope: base,
         icons: [
           {
-            src: '/icons/icon-192.svg',
+            src: `${base}icons/icon-192.svg`,
             sizes: '192x192',
             type: 'image/svg+xml',
           },
           {
-            src: '/icons/icon-512.svg',
+            src: `${base}icons/icon-512.svg`,
             sizes: '512x512',
             type: 'image/svg+xml',
           },
           {
-            src: '/icons/icon-512.svg',
+            src: `${base}icons/icon-512.svg`,
             sizes: '512x512',
             type: 'image/svg+xml',
             purpose: 'maskable',
