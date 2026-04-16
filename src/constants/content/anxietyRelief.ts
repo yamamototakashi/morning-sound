@@ -1,0 +1,40 @@
+import type { ContentItem } from '../../types';
+
+export const anxietyReliefContent: ContentItem[][] = [
+  [
+    { type: 'speech', text: '今、頭の中でいくつかのことが混ざっているかもしれません' },
+    { type: 'pause', pauseMultiplier: 1.5 },
+    { type: 'speech', text: 'でも、今ここで扱うのはひとつだけで十分です' },
+    { type: 'pause', pauseMultiplier: 1.5 },
+    { type: 'speech', text: '今日やることを一件だけ選ぶなら、それで流れは変わります' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: '今は全部を解こうとしなくて大丈夫です' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: '深く息を吸って、ゆっくり吐いてください' },
+    { type: 'pause', pauseMultiplier: 2.5 },
+  ],
+  [
+    { type: 'speech', text: '考えが止まらないのは、自然なことです' },
+    { type: 'pause', pauseMultiplier: 1.5 },
+    { type: 'speech', text: 'その中から、今一番気になっていることをひとつだけ選んでください' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: 'それについて、今日できる最も小さなことは何でしょうか' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: 'それだけでいいんです。残りは明日でも構いません' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: 'ゆっくり呼吸を続けてください' },
+    { type: 'pause', pauseMultiplier: 2.5 },
+  ],
+  [
+    { type: 'speech', text: '不安は、何かを大切にしている証拠でもあります' },
+    { type: 'pause', pauseMultiplier: 1.5 },
+    { type: 'speech', text: 'ただ、今この瞬間にすべてを解決する必要はありません' },
+    { type: 'pause', pauseMultiplier: 1.5 },
+    { type: 'speech', text: '一つだけ決めてください。最初の一手は何ですか' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: 'その一手を思い浮かべたら、それで十分です' },
+    { type: 'pause', pauseMultiplier: 2 },
+    { type: 'speech', text: '焦らなくて大丈夫です。ゆっくりで大丈夫です' },
+    { type: 'pause', pauseMultiplier: 2.5 },
+  ],
+];
