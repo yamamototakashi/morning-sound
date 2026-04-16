@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/morning-sound/sw.js', { scope: '/morning-sound/' })})}
