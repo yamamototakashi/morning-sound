@@ -104,7 +104,7 @@ export function usePlayer(settings: AppSettings) {
 
           if (item.type === 'speech' && item.text) {
             try {
-              await tts.speak(item.text, settingsRef.current.speechRate);
+              await tts.speak(item.text, settingsRef.current.speechRate, undefined, settingsRef.current.voiceType);
             } catch {
               if (abortRef.current) return;
             }

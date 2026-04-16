@@ -43,6 +43,11 @@ export const LEARNING_GENRE_LABELS: Record<string, string> = {
 
 export const SESSION_LENGTH_OPTIONS = [3, 5, 10] as const;
 
+export const VOICE_TYPE_LABELS: Record<string, string> = {
+  default: '標準',
+  male: 'おじさん',
+};
+
 export const DEFAULT_SETTINGS: AppSettings = {
   learningGenre: 'language',
   speechRate: 0.85,
@@ -54,4 +59,6 @@ export const DEFAULT_SETTINGS: AppSettings = {
     '完璧でなくていい、始めることが大事',
     '小さな一歩が流れを変える',
   ],
+  voiceType: 'default',
+  bedtime: null,
 };

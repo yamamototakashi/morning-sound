@@ -118,6 +118,43 @@ input[type='range']::-webkit-slider-thumb {
   color: var(--text-primary);
 }
 
+/* Sleep Tracker */
+
+.sleep-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: background 0.2s;
+}
+.sleep-tracker:active {
+  background: var(--bg-active);
+}
+
+.sleep-duration {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.sleep-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.sleep-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
 .last-mode-shortcut {
   display: block;
   width: 100%;

@@ -5,9 +5,22 @@ interface Props {
   settings: AppSettings;
   onSelect: (mode: ModeId) => void;
   onOpenSettings: () => void;
+  onToggleBedtime: () => void;
 }
 
-export function ModeSelect({ settings, onSelect, onOpenSettings }: Props) {
+function formatDuration(ms: number): string {
+  const totalMin = Math.floor(ms / 60000);
+  const hours = Math.floor(totalMin / 60);
+  const mins = totalMin % 60;
+  if (hours === 0) return `${mins}分`;
+  return `${hours}時間${mins > 0 ? `${mins}分` : ''}`;
+}
+
+export function ModeSelect({ settings, onSelect, onOpenSettings, onToggleBedtime }: Props) {
+  const sleepDuration = settings.bedtime
+    ? Date.now() - settings.bedtime
+    : null;
+
   return (
     <div className="mode-select">
       <header className="mode-select-header">
@@ -20,6 +33,23 @@ export function ModeSelect({ settings, onSelect, onOpenSettings }: Props) {
           ⚙
         </button>
       </header>
+
+      {/* Sleep duration display */}
+      <button className="sleep-tracker" onClick={onToggleBedtime}>
+        {settings.bedtime ? (
+          <>
+            <span className="sleep-duration">
+              {sleepDuration != null && formatDuration(sleepDuration)}
+            </span>
+            <span className="sleep-label">睡眠中 — タップでリセット</span>
+          </>
+        ) : (
+          <>
+            <span className="sleep-icon">🛏</span>
+            <span className="sleep-label">就寝する（タップで記録開始）</span>
+          </>
+        )}
+      </button>
 
       {settings.lastMode && (
         <button

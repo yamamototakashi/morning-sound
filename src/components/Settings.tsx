@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import type { AppSettings, LearningGenre, SessionLength } from '../types';
+import type { AppSettings, LearningGenre, SessionLength, VoiceType } from '../types';
 import {
   LEARNING_GENRE_LABELS,
   SESSION_LENGTH_OPTIONS,
+  VOICE_TYPE_LABELS,
 } from '../constants/appConfig';
+import { getTTSProvider } from '../services/tts';
 
 interface Props {
   settings: AppSettings;
@@ -26,6 +28,12 @@ export function Settings({ settings, onUpdate, onClose }: Props) {
     onUpdate({ memos: settings.memos.filter((_, i) => i !== index) });
   };
 
+  const testVoice = (voiceType: VoiceType) => {
+    const tts = getTTSProvider();
+    tts.cancel();
+    tts.speak('おはようございます、今日もいい一日にしましょう', settings.speechRate, 'ja-JP', voiceType);
+  };
+
   return (
     <div className="settings">
       <header className="settings-header">
@@ -36,6 +44,32 @@ export function Settings({ settings, onUpdate, onClose }: Props) {
       </header>
 
       <div className="settings-body">
+        {/* Voice Type */}
+        <section className="settings-section">
+          <h3>声の種類</h3>
+          <div className="settings-genre-grid">
+            {(Object.entries(VOICE_TYPE_LABELS) as [VoiceType, string][]).map(
+              ([key, label]) => (
+                <button
+                  key={key}
+                  className={`genre-btn ${
+                    settings.voiceType === key ? 'genre-btn-active' : ''
+                  }`}
+                  onClick={() => {
+                    onUpdate({ voiceType: key });
+                    testVoice(key);
+                  }}
+                >
+                  {label}
+                </button>
+              )
+            )}
+          </div>
+          <p className="settings-hint" style={{ marginTop: 8 }}>
+            タップで試聴できます。「おじさん」は低めの声で再生します。
+          </p>
+        </section>
+
         {/* Learning Genre */}
         <section className="settings-section">
           <h3>学習ジャンル</h3>

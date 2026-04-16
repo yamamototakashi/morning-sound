@@ -4,6 +4,8 @@ export type LearningGenre = 'language' | 'business' | 'memo' | 'trivia';
 
 export type SessionLength = 3 | 5 | 10;
 
+export type VoiceType = 'default' | 'male';
+
 export interface ModeDefinition {
   id: ModeId;
   label: string;
@@ -26,15 +28,18 @@ export interface AppSettings {
   sessionLength: SessionLength;
   lastMode: ModeId | null;
   memos: string[];
+  voiceType: VoiceType;
+  bedtime: number | null;
 }
 
 export type PlaybackState = 'idle' | 'playing' | 'paused' | 'stopped';
 
 export interface TTSProvider {
-  speak(text: string, rate: number, lang?: string): Promise<void>;
+  speak(text: string, rate: number, lang?: string, voiceType?: VoiceType): Promise<void>;
   pause(): void;
   resume(): void;
   cancel(): void;
   isSpeaking(): boolean;
   isPaused(): boolean;
+  getAvailableVoices(): SpeechSynthesisVoice[];
 }

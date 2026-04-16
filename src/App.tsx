@@ -33,6 +33,16 @@ export default function App() {
     setScreen('select');
   }, [stop]);
 
+  const handleToggleBedtime = useCallback(() => {
+    if (settings.bedtime) {
+      // Clear bedtime
+      updateSettings({ bedtime: null });
+    } else {
+      // Record bedtime as now
+      updateSettings({ bedtime: Date.now() });
+    }
+  }, [settings.bedtime, updateSettings]);
+
   return (
     <div className="app">
       {screen === 'select' && (
@@ -40,6 +50,7 @@ export default function App() {
           settings={settings}
           onSelect={handleSelectMode}
           onOpenSettings={() => setScreen('settings')}
+          onToggleBedtime={handleToggleBedtime}
         />
       )}
 
